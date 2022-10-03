@@ -1,9 +1,9 @@
 import * as C from './sytled'
 import { useContext } from 'react'
 import { Context } from '../../Contexts/ContextGeral'
-import { Sun, Moon } from 'phosphor-react'
+import { Moon, RocketLaunch } from 'phosphor-react'
 
-export const ToggleTheme = () => {
+export const ToggleTheme = ({ msg }) => {
     const { state, dispatch } = useContext(Context)
 
     const handleTheme = () => {
@@ -22,12 +22,14 @@ export const ToggleTheme = () => {
 
     return(
         <C.Container>
-            
+            {msg && 
+                <span>Mude para o tema {state.themeStatus.bg === 'background-light' ? 'dark🌑→' : 'chama🔥→'}</span>
+            }
             {state.themeStatus.bg === 'background-light' && 
                 <Moon size={25} onClick={handleTheme} />
             }
             {state.themeStatus.bg === 'background-dark' && 
-                <Sun size={25} onClick={handleTheme} />
+                <RocketLaunch size={25} onClick={handleTheme} />
             }
         </C.Container>
     )
