@@ -1,51 +1,57 @@
 import * as C from './styled'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
+import { Navigate, useNavigate } from 'react-router-dom'
+// firebase
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../../services/firebase'
 import { Context } from '../../Contexts/ContextGeral'
-import { Link } from 'react-router-dom'
+
 
 export const LoginPage = () => {
     const { state, dispatch } = useContext(Context)
 
-    const handleContextData = () => {
-        dispatch({
-            type: 'USER_NAME',
-            payload: {
-                name: 'lucas'
-            }
-        })
-    }
-    const handleTheme = () => {
-        if(state.themeStatus.bg === 'background-light'){
-            dispatch({
-                type: 'THEME',
-                payload: {
-                    bg: 'background-dark',
-                    text: 'text-light'
+    // form
+    const [email,setEmail] = useState('')
+    const [senha,setSenha] = useState('')
 
+    const navigate = useNavigate()
+    
+    const handleForm = () => {
+        const form = {email, senha}
+        console.log('...form',form)
+
+        signInWithEmailAndPassword(auth, email, senha)
+        .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            dispatch({
+                type: 'USER_INFO',
+                payload: {
+                    userStatus: user
                 }
             })
-        } else {
-            dispatch({
-                type: 'THEME',
-                payload: {
-                    bg: 'background-light',
-                    text: 'text-dark'
-                }
-            })
-        }
+            sessionStorage.setItem('@AuthFirebase:token', user.uid)
+            sessionStorage.setItem('@AuthFirebase:user', JSON.stringify(user))
+            navigate('/home')
+            
+          })
+          .catch((error) => {
+            alert('email ou senha incorretos!')
+          });
     }
 
-    return(
+    return state.dadosUser.User !== null ? <Navigate to='/home' /> : (
         <C.Container>
-            Login {state.dadosUser.name}
+            Login
             <br />
-            theme: {state.themeStatus.bg} e {state.themeStatus.text}
-            <br />
-            <Link to='/home'>Page home</Link>
-            <br />
-            <button onClick={handleContextData}>Insierir dados</button>
-            <br />
-            <button onClick={handleTheme}>Modo light</button>
+            <label htmlFor="">Email
+                <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)} />
+            </label>
+            <label htmlFor="">Senha
+                <input type="text" value={senha} onChange={(e)=>setSenha(e.target.value)} />
+            </label>
+            <button onClick={handleForm}>Enviar</button>
+            
         </C.Container>
-    )
+    ) 
 }

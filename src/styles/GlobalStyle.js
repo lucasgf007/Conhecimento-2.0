@@ -12,14 +12,25 @@ export const GlobalStyles = createGlobalStyle`
         --background-dark: linear-gradient(to right top, #2f3136, #2d3036, #2c2e35, #2a2d35, #282c34);
     }
     
-    body{
+    * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
+    }
+
+    body{
         font-family: 'Montserrat', sans-serif;
+        -webkit-font-smoothing: antialiased;
+
         background-image: var( --${item => item.bg} );
         background-size: cover;
         background-repeat: no-repeat;
         height: 100vh;
         color: var( --${item => item.text} );
+    }
+
+    button{
+        cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
     }
 `;

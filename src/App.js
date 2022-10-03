@@ -1,6 +1,7 @@
 import { useContext } from 'react';
+// import { AuthGoogleProvider } from './Contexts/authGoogle';
 import { Context } from './Contexts/ContextGeral'
-import { Router } from './router'
+import { Router } from './Routes/router';
 import { GlobalStyles } from "./styles/GlobalStyle";
 
 function App() {
