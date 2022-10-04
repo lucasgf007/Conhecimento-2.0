@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import * as C from './styled'
 
 // components
@@ -7,54 +7,71 @@ import { ToggleTheme } from '../Theme_modo'
 import { Context } from '../../Contexts/ContextGeral'
 
 // icons
-import { MagnifyingGlass, House, SignOut, PresentationChart, Image, Book, User, Gear, ChatDots } from 'phosphor-react'
+import { MagnifyingGlass, House, SignOut, PresentationChart, Image, Book, User, Gear, ChatDots, ArrowLeft } from 'phosphor-react'
+import { useLocation } from 'react-router-dom'
 
 export const Sidebar = () => {
     const { state } = useContext(Context)
+    const [ sidebarOpen, setSidebarOpen ] = useState(true)
+    const { pathname } = useLocation()
+
 
     return(
         <C.Container>
-            <C.SSidebar bg={state.themeStatus.bg}>
+            <C.SSidebar bg={state.themeStatus.bg} isOpen={sidebarOpen}>
+                <>
+                    <C.SSidebarButton bg={state.themeStatus.bg} isOpen={sidebarOpen} onClick={() => setSidebarOpen(p => !p)}>
+                        <ArrowLeft />
+                    </C.SSidebarButton>
+                </>
                 <C.Slogo>
-                    img
+                    {!sidebarOpen ? (<h4>SB</h4>) : (<h4>Conhecimento</h4>)}
+                    
                 </C.Slogo>
-                <C.SSearch bg={state.themeStatus.bg}>
+                <C.SSearch bg={state.themeStatus.bg} style={!sidebarOpen ? {width: `fit-content`} : {}} >
                     <C.SSearchIcon>
                         <MagnifyingGlass color='#fff' />
                     </C.SSearchIcon>
-                    <input type={'search'} />
+                    <input type={'search'} style={!sidebarOpen ? {width: 0, padding: 0} : {}} />
                 </C.SSearch>  
                 <C.SDivider bg={state.themeStatus.bg} />
     
                 {linksArray.map((e, index)=>(
-                    <C.SLinkContainer key={index}>
-                        <C.SLink to={`/home${e.to}`}>
+                    <C.SLinkContainer key={index} isActive={pathname === `/home${e.to}`} bg={state.themeStatus.bg === 'background-light'}>
+                        <C.SLink to={`/home${e.to}`} style={!sidebarOpen ? {width: `fit-content`} : {}}>
                             <C.SLinkIcon> {e.icon} </C.SLinkIcon>
-                            <C.SLinkLabel> {e.label} </C.SLinkLabel>
-                            {e.notification !== 0 && 
-                                <C.SLinkNotification> {e.notification} </C.SLinkNotification>
-                            }
+                            {sidebarOpen && (
+                                <>
+                                    <C.SLinkLabel> {e.label} </C.SLinkLabel>
+                                    {e.notification !== 0 && 
+                                        <C.SLinkNotification> {e.notification} </C.SLinkNotification>
+                                    }
+                                </>
+                            )}
+                            
+                            
                         </C.SLink>
                     </C.SLinkContainer>
                 ))}
                 <C.SDivider bg={state.themeStatus.bg} />
                 {secondaryLinksArray.map((e, index)=>(
-                    <C.SLinkContainer key={index}>
-                        <C.SLink to={`/home${e.to}`}>
+                    <C.SLinkContainer key={index} isActive={pathname === `/home${e.to}`} bg={state.themeStatus.bg === 'background-light'}>
+                        <C.SLink to={`/home${e.to}`} style={!sidebarOpen ? {width: `fit-content`} : {}}>
                             <C.SLinkIcon> {e.icon} </C.SLinkIcon>
-                            <C.SLinkLabel> {e.label} </C.SLinkLabel>
+                            {sidebarOpen && <C.SLinkLabel> {e.label} </C.SLinkLabel>}
+                            
                         </C.SLink>
                     </C.SLinkContainer>
                 ))}
                 <C.SLinkContainer>
-                    <Logout >
+                    <Logout style={!sidebarOpen ? {width: `fit-content`} : {}}>
                         <C.SLinkIcon> <SignOut /> </C.SLinkIcon>
-                        <C.SLinkLabel> Sair </C.SLinkLabel>
+                        {sidebarOpen && <C.SLinkLabel> Sair </C.SLinkLabel>}
                     </Logout>
                 </C.SLinkContainer>
                 <C.SDivider bg={state.themeStatus.bg} />
                 <C.Theme>
-                    <ToggleTheme msg={true} />
+                    <ToggleTheme msg={sidebarOpen ? true : false} justify={sidebarOpen} />
                 </C.Theme>
             </C.SSidebar>
         </C.Container>
@@ -77,7 +94,7 @@ const linksArray = [
     {
         label: 'Galeria',
         icon: <Image />,
-        to: '/dist',
+        to: '/galeria',
         notification: 0
     },
     {
@@ -89,7 +106,7 @@ const linksArray = [
     {
         label: 'Sugestão / Ajuda',
         icon: <ChatDots />,
-        to: '/dist',
+        to: '/chat',
         notification: 0
     },
     {

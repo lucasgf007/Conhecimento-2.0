@@ -9,9 +9,9 @@ export const Container  = styled.div`
 `;
 
 export const SSidebar = styled.div`
-    width: ${v.sidebarWidth};
+    width: ${({ isOpen }) => !isOpen ? `auto` : v.sidebarWidth};
     background-color: ${item => item.bg === 'background-light' ? '#fff' : '#575B64'};
-    padding: ${v.lgSpacing};
+    padding: ${({ isOpen }) => !isOpen ? v.mdSpacing : v.lgSpacing};
     margin: 15px;
     flex-grow: 1;
     flex-basis: auto;
@@ -21,8 +21,34 @@ export const SSidebar = styled.div`
     position: relative;
 `;
 
+export const SSidebarButton = styled.button`
+    ${btnReset};
+    position: absolute;
+    top: ${v.xxlSpacing};
+    right: ${({ isOpen }) => isOpen ? `-16px` : `-40px`};
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: ${item => item.bg === 'background-light' ? '#fff' : '#575B64'};
+    box-shadow: ${v.boxShadow};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    transform: ${({ isOpen }) => (!isOpen ? `rotate(180deg)` : `initial`)};
+`;
+
 export const Slogo = styled.div`
-    width: 52px;
+    /* width: 52px; */
+    h4{
+        font-size: 17px;
+        font-weight: 300;
+        letter-spacing: 8px;
+        text-transform: uppercase;
+    }
+    display: flex;
+    justify-content: center;
 
     img{
         max-width: 100%;
@@ -71,12 +97,12 @@ export const SDivider = styled.div`
 `;
 
 export const SLinkContainer = styled.div`
-    background: transparent;
+    background: ${({ isActive, bg }) => (!isActive ? `transparent` : (bg ? '#DADDE2' : '#292C34'))};
     border-radius: ${v.borderRadius};
     margin: 8px 0;
 
     :hover{
-        box-shadow: inset 0 0 0 1px #000;
+        box-shadow: ${v.boxShadow};
     }
 `;
 
@@ -120,3 +146,4 @@ export const Theme = styled.div`
     margin: 8px 0;
 
 `;
+

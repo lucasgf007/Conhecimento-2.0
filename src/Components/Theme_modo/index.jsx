@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { Context } from '../../Contexts/ContextGeral'
 import { Moon, RocketLaunch } from 'phosphor-react'
 
-export const ToggleTheme = ({ msg }) => {
+export const ToggleTheme = ({ msg, justify }) => {
     const { state, dispatch } = useContext(Context)
 
     const handleTheme = () => {
@@ -21,7 +21,7 @@ export const ToggleTheme = ({ msg }) => {
     }
 
     return(
-        <C.Container>
+        <C.Container js={justify}>
             {msg && 
                 <span>Mude para o tema {state.themeStatus.bg === 'background-light' ? 'dark🌑→' : 'chama🔥→'}</span>
             }

@@ -4,7 +4,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: ${item => item.js ? `space-between` : `center`};
     padding: 10px;
     span{
       padding-right: 5px;
