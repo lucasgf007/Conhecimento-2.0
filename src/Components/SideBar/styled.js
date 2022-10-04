@@ -16,6 +16,7 @@ export const SSidebar = styled.div`
     flex-grow: 1;
     flex-basis: auto;
     border-radius: 10px;
+    box-shadow: ${v.boxShadow};
 
     position: relative;
 `;
@@ -111,4 +112,11 @@ export const SLinkNotification = styled.div`
     color: white;
 
     margin-right: ${v.mdSpacing};
+`;
+
+export const Theme = styled.div`
+    background: transparent;
+    border-radius: ${v.borderRadius};
+    margin: 8px 0;
+
 `;

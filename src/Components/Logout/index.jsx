@@ -6,7 +6,7 @@ import { Context } from '../../Contexts/ContextGeral'
 import { auth } from '../../services/firebase'
 import { signOut } from 'firebase/auth'
 
-export const Logout = () => {
+export const Logout = ({ children }) => {
     const { dispatch } = useContext(Context)
     const navigate = useNavigate()
 
@@ -27,7 +27,7 @@ export const Logout = () => {
 
     return(
         <C.Btn onClick={()=>logout()}>
-            logout
+            {children}
         </C.Btn>
     )
 }

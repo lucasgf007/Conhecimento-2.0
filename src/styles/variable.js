@@ -7,7 +7,8 @@ export const v = {
     lgSpacing: `24px`,
     xlSpacing: `32px`,
     xxlSpacing: `48px`,
-    borderRadius: `6px`
+    borderRadius: `10px`,
+    boxShadow: `0px 5px 10px 0px rgba(0, 0, 0, 0.5)`
 }
 
 export const btnReset = css`

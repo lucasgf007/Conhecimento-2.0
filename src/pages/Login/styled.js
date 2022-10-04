@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { v } from "../../styles/variable";
 
 export const Container = styled.div`
     display: flex;
@@ -11,17 +12,17 @@ export const FormContainer = styled.div`
     background-color: #fff;
     color: #2B2D35;
     width: 900px;
-    border-radius: 5px;
+    border-radius: ${v.borderRadius};
     display: flex;
     flex-direction: row;
-    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: ${v.boxShadow};
 
     .img{
         width: 50%;
-        border-radius: 5px 0 0 5px;
+        border-radius: ${v.borderRadius} 0 0 ${v.borderRadius};
         background-image: linear-gradient(to right top, #dcecfc, #deedfd, #e0eefe, #e2effe, #e4f0ff);
         text-align: center;
-        padding: 15px 0;
+        padding: 20px 0;
         img{
             width: 320px;
         }
