@@ -11,6 +11,8 @@ import Foguete from '../../assets/foguete.png'
 
 import toast, { Toaster } from 'react-hot-toast';
 
+// API
+import { useApi } from '../../api/userApi'
 
 export const LoginPage = () => {
     const { state, dispatch } = useContext(Context)
@@ -23,30 +25,32 @@ export const LoginPage = () => {
 
     const navigate = useNavigate()
     
-    const handleForm = () => {
+    const handleForm = async () => {
         const form = {email, senha}
         console.log('...form',form)
 
         if(email !== '' && senha !== ''){
-            signInWithEmailAndPassword(auth, email, senha)
-            .then((userCredential) => {
-                // Signed in
-                const user = userCredential.user;
-                dispatch({
-                    type: 'USER_INFO',
-                    payload: {
-                        userStatus: user
-                    }
-                })
-                sessionStorage.setItem('@AuthFirebase:token', user.uid)
-                sessionStorage.setItem('@AuthFirebase:user', JSON.stringify(user))
-                navigate('/home')
+            let json = await useApi.user(email, senha)
+            console.log(json)
+            // signInWithEmailAndPassword(auth, email, senha)
+            // .then((userCredential) => {
+            //     // Signed in
+            //     const user = userCredential.user;
+            //     dispatch({
+            //         type: 'USER_INFO',
+            //         payload: {
+            //             userStatus: user
+            //         }
+            //     })
+            //     sessionStorage.setItem('@AuthFirebase:token', user.uid)
+            //     sessionStorage.setItem('@AuthFirebase:user', JSON.stringify(user))
+            //     navigate('/home')
                 
-            })
-            .catch((error) => {
-                toast.error("Email ou senha incorretos!")
-                setCampos(true)
-            });
+            // })
+            // .catch((error) => {
+            //     toast.error("Email ou senha incorretos!")
+            //     setCampos(true)
+            // });
         } else {
             setCampos(true)
             setMsgInput(true)
