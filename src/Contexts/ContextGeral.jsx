@@ -30,8 +30,8 @@ export const ContextProvider = ({ children }) => {
     
     useEffect(()=>{
         const loadStoreAuth = () => {
-            const sessionToken = sessionStorage.getItem('@AuthFirebase:token')
-            const sessionUser = sessionStorage.getItem('@AuthFirebase:user')
+            const sessionToken = localStorage.getItem('@Auth:token')
+            const sessionUser = localStorage.getItem('@Auth:user')
 
             if(sessionToken && sessionUser){
                 dispatch({

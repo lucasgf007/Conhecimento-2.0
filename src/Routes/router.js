@@ -20,7 +20,6 @@ export const Router = () => {
                             <Route path='cursos' element={<h1>cursos</h1>}/>
                             <Route path='chat' element={<h1>chat</h1>}/>
                             <Route path='perfil' element={<h1>perfil</h1>}/>
-                            <Route path='config' element={<h1>config</h1>}/>
                         </Routes>
                     </Layout>
                 </PrivateRoutes>

@@ -7,7 +7,7 @@ import { ToggleTheme } from '../Theme_modo'
 import { Context } from '../../Contexts/ContextGeral'
 
 // icons
-import { MagnifyingGlass, House, SignOut, PresentationChart, Image, Book, User, Gear, ChatDots, ArrowLeft } from 'phosphor-react'
+import { MagnifyingGlass, House, SignOut, PresentationChart, Image, Book, User, ChatDots, ArrowLeft } from 'phosphor-react'
 import { useLocation } from 'react-router-dom'
 
 export const Sidebar = () => {
@@ -54,15 +54,7 @@ export const Sidebar = () => {
                     </C.SLinkContainer>
                 ))}
                 <C.SDivider bg={state.themeStatus.bg} />
-                {secondaryLinksArray.map((e, index)=>(
-                    <C.SLinkContainer key={index} isActive={pathname === `/home${e.to}`} bg={state.themeStatus.bg === 'background-light'}>
-                        <C.SLink to={`/home${e.to}`} style={!sidebarOpen ? {width: `fit-content`} : {}}>
-                            <C.SLinkIcon> {e.icon} </C.SLinkIcon>
-                            {sidebarOpen && <C.SLinkLabel> {e.label} </C.SLinkLabel>}
-                            
-                        </C.SLink>
-                    </C.SLinkContainer>
-                ))}
+                
                 <C.SLinkContainer>
                     <Logout style={!sidebarOpen ? {width: `fit-content`} : {}}>
                         <C.SLinkIcon> <SignOut /> </C.SLinkIcon>
@@ -117,10 +109,3 @@ const linksArray = [
     }
 ]
 
-const secondaryLinksArray = [
-    {
-        label: 'Configurações',
-        icon: <Gear />,
-        to: '/config'
-    },
-]

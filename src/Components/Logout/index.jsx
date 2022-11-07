@@ -12,7 +12,7 @@ export const Logout = ({ children }) => {
 
     function logout() {
         signOut(auth).then(()=>{
-            sessionStorage.clear()
+            localStorage.clear()
             dispatch({
                 type: 'USER_INFO',
                 payload: {

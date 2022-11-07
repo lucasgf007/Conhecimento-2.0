@@ -2,8 +2,8 @@ import * as C from './styled'
 import { useContext, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 // firebase
-import { signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../../services/firebase'
+// import { signInWithEmailAndPassword } from 'firebase/auth'
+// import { auth } from '../../services/firebase'
 import { Context } from '../../Contexts/ContextGeral'
 
 import { ToggleTheme } from '../../Components/Theme_modo'
@@ -25,32 +25,30 @@ export const LoginPage = () => {
 
     const navigate = useNavigate()
     
-    const handleForm = async () => {
-        const form = {email, senha}
-        console.log('...form',form)
+    const handleForm =  () => {
+        // const form = {email, senha}
+        // console.log('...form',form)
 
         if(email !== '' && senha !== ''){
-            let json = await useApi.user(email, senha)
-            console.log(json)
-            // signInWithEmailAndPassword(auth, email, senha)
-            // .then((userCredential) => {
-            //     // Signed in
-            //     const user = userCredential.user;
-            //     dispatch({
-            //         type: 'USER_INFO',
-            //         payload: {
-            //             userStatus: user
-            //         }
-            //     })
-            //     sessionStorage.setItem('@AuthFirebase:token', user.uid)
-            //     sessionStorage.setItem('@AuthFirebase:user', JSON.stringify(user))
-            //     navigate('/home')
-                
-            // })
-            // .catch((error) => {
-            //     toast.error("Email ou senha incorretos!")
-            //     setCampos(true)
-            // });
+            useApi.user(email, senha)
+            .then((e)=>{
+                console.log(e)
+                dispatch({
+                    type: 'USER_INFO',
+                    payload: {
+                        userStatus: e[0]
+                    }
+                })
+                localStorage.setItem('@Auth:token', e[0].id)
+                localStorage.setItem('@Auth:user', JSON.stringify(e[0]))
+                navigate('/home')
+
+            })
+            .catch((error)=>{
+                toast.error("Email ou senha incorretos!")
+                setCampos(true)
+            })
+
         } else {
             setCampos(true)
             setMsgInput(true)
