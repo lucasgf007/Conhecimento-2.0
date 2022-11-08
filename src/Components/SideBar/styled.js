@@ -96,6 +96,24 @@ export const SDivider = styled.div`
     margin: ${v.lgSpacing} 0;
 `;
 
+export const SLinkContainerGeral = styled.div`
+    overflow-x: auto;
+    ::-webkit-scrollbar{
+        width: 1px;
+        border-radius: 50%;
+    }
+    ::-webkit-scrollbar-track {
+        background: transparent;        /* color of the tracking area */
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: #2A2D35;    /* color of the scroll thumb */
+    }
+
+    @media (max-height: 700px) {
+        height: 250px;
+    }
+`;
+
 export const SLinkContainer = styled.div`
     background: ${({ isActive, bg }) => (!isActive ? `transparent` : (bg ? '#DADDE2' : '#292C34'))};
     border-radius: ${v.borderRadius};

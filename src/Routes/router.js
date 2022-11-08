@@ -4,6 +4,7 @@ import { PrivateRoutes } from './Private'
 import { Home } from '../pages/Home'
 import { Layout } from '../Components/theme'
 import { LoginPage } from '../pages/Login'
+import { Perfil } from '../pages/Perfil'
 
 export const Router = () => {
 
@@ -19,7 +20,7 @@ export const Router = () => {
                             <Route path='galeria' element={<h1>Em breve...</h1>}/>
                             <Route path='cursos' element={<h1>cursos</h1>}/>
                             <Route path='chat' element={<h1>chat</h1>}/>
-                            <Route path='perfil' element={<h1>perfil</h1>}/>
+                            <Route path='perfil' element={<Perfil />}/>
                         </Routes>
                     </Layout>
                 </PrivateRoutes>

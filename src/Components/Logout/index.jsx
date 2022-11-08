@@ -12,7 +12,8 @@ export const Logout = ({ children }) => {
 
     function logout() {
         signOut(auth).then(()=>{
-            localStorage.clear()
+            localStorage.removeItem('@Auth:token')
+            localStorage.removeItem('@Auth:user')
             dispatch({
                 type: 'USER_INFO',
                 payload: {

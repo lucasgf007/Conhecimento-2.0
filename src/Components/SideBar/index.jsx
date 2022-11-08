@@ -36,23 +36,26 @@ export const Sidebar = () => {
                 </C.SSearch>  
                 <C.SDivider bg={state.themeStatus.bg} />
     
-                {linksArray.map((e, index)=>(
-                    <C.SLinkContainer key={index} isActive={pathname === `/home${e.to}`} bg={state.themeStatus.bg === 'background-light'}>
-                        <C.SLink to={`/home${e.to}`} style={!sidebarOpen ? {width: `fit-content`} : {}}>
-                            <C.SLinkIcon> {e.icon} </C.SLinkIcon>
-                            {sidebarOpen && (
-                                <>
-                                    <C.SLinkLabel> {e.label} </C.SLinkLabel>
-                                    {e.notification !== 0 && 
-                                        <C.SLinkNotification> {e.notification} </C.SLinkNotification>
-                                    }
-                                </>
-                            )}
-                            
-                            
-                        </C.SLink>
-                    </C.SLinkContainer>
-                ))}
+                <C.SLinkContainerGeral>
+                    {linksArray.map((e, index)=>(
+                        <C.SLinkContainer key={index} isActive={pathname === `/home${e.to}`} bg={state.themeStatus.bg === 'background-light'}>
+                            <C.SLink to={`/home${e.to}`} style={!sidebarOpen ? {width: `fit-content`} : {}}>
+                                <C.SLinkIcon> {e.icon} </C.SLinkIcon>
+                                {sidebarOpen && (
+                                    <>
+                                        <C.SLinkLabel> {e.label} </C.SLinkLabel>
+                                        {e.notification !== 0 && 
+                                            <C.SLinkNotification> {e.notification} </C.SLinkNotification>
+                                        }
+                                    </>
+                                )}
+                                
+                                
+                            </C.SLink>
+                        </C.SLinkContainer>
+                    ))}
+                </C.SLinkContainerGeral>
+                
                 <C.SDivider bg={state.themeStatus.bg} />
                 
                 <C.SLinkContainer>

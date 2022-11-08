@@ -27,7 +27,7 @@ export const GlobalStyles = createGlobalStyle`
         letter-spacing: .6px;
         background-size: cover;
         background-repeat: no-repeat;
-        height: 100vh;
+        height: 100%;
         
     }
 

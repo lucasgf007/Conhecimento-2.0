@@ -13,6 +13,9 @@ export const useApi = {
     delUser: () => {
         
     },
+    updateUser: () => {
+        
+    },
     user: async (email, pass) => {
         let response = await axios.get(`${BASE}/users`, {
             params: {
