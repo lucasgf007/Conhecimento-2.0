@@ -7,40 +7,51 @@ import { useContext, useState } from 'react'
 
 export const ContainerAvatar = () => {
     const { state } = useContext(Context)
-    const [ avatar, setAvatar ] = useState({
-        body: undefined,
-        clothingColor: undefined
-    })
+    // useStates
+    const [ body, setBody ] = useState(undefined)
+    const [ lipColor, setLipColor ] = useState(undefined)
+    const [ skinTone, setSkinTone ] = useState(undefined)
+    const [ hair, setHair ] = useState(undefined)
+    const [ hairColor, setHairColor ] = useState(undefined)
+    const [ clothing, setClothing ] = useState(undefined)
+    const [ clothingColor, setClothingColor ] = useState(undefined)
+    const [ eyes, setEyes ] = useState(undefined)
+    const [ eyebrows, setEyebrows ] = useState(undefined)
+    const [ mouth, setMouth ] = useState(undefined)
+    const [ facialHair, setFacialHair ] = useState(undefined)
+    const [ accessory, setAccessory ] = useState(undefined)
 
-    function handleBodyObject (e){
-        let updateValue = {};
-        updateValue = {body: e}
-        setAvatar(item => ({
-            ...item,
-            ...updateValue
-        }))
-    }
-    function handleClothingColorObject (e){
-        let updateValue = {};
-        updateValue = {clothingColor: e}
-        setAvatar(item => ({
-            ...item,
-            ...updateValue
-        }))
-    }
+    // function handleClothingColorObject (e){
+    //     let updateValue = {};
+    //     updateValue = {clothingColor: e}
+    //     setAvatar(item => ({
+    //         ...item,
+    //         ...updateValue
+    //     }))
+    // }
 
     return(
         <C.Container>
             <div className='form'>
                 <h3>Avatar SeuBoné</h3>
                 <label> Corpo
-                    <select name="body" onChange={e => handleBodyObject(e.target.value)}>
-                        <option value="chest">Homem</option>
-                        <option value="breasts">Mulher</option>
+                    <select name="body" onChange={e => setBody(e.target.value)}>
+                        <option value="chest">Peito</option>
+                        <option value="breasts">Peitos</option>
+                    </select>
+                </label>
+                <label> Ton da pele
+                    <select name="body" onChange={e => setSkinTone(e.target.value)}>
+                        <option value="black">Escura</option>
+                        <option value="red">Avermelhada</option>
+                        <option value="brown">Castanho</option>
+                        <option value="light">Branco</option>
+                        <option value="yellow">Amarelo</option>
+                        <option value="dark">dark</option>
                     </select>
                 </label>
                 <label> Camisa
-                    <select name="camisa" onChange={e => handleClothingColorObject(e.target.value)}>
+                    <select name="camisa" onChange={e => setClothingColor(e.target.value)}>
                         <option value="blue">Azul</option>
                         <option value="white">Branco</option>
                         <option value="black">Preto</option>
@@ -48,30 +59,29 @@ export const ContainerAvatar = () => {
                         <option value="red">vermelho</option>
                     </select>
                 </label>
-                <button onClick={()=>console.log(avatar)}>ver</button>
             </div>
             <div className='avatar'>
                 <BigHead
-                    accessory="none"
-                    body={avatar.body}
+                    accessory={accessory}
+                    body={body}
                     circleColor='blue'
-                    clothing="shirt"
-                    clothingColor={avatar.clothingColor}
-                    eyebrows="angry"
-                    eyes="simple"
+                    clothing={clothing}
+                    clothingColor={clothingColor}
+                    eyebrows={eyebrows}
+                    eyes={eyes}
                     faceMask={false}
                     faceMaskColor="white"
-                    facialHair="none2"
-                    graphic="gatsby"
-                    hair="short"
-                    hairColor="black"
-                    hat="beanie"
+                    facialHair={facialHair}
+                    graphic="none"
+                    hair={hair}
+                    hairColor={hairColor}
+                    hat="none"
                     hatColor="green"
                     lashes
-                    lipColor="purple"
+                    lipColor={lipColor}
                     mask
-                    mouth="tongue"
-                    skinTone="black"
+                    mouth={mouth}
+                    skinTone={skinTone}
                 />
             </div>
         </C.Container>

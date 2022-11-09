@@ -55,26 +55,26 @@ export const Perfil = () => {
                     <div className='card'>
                         <div className='foto'>
                             <BigHead
-                                accessory="none"
-                                body="chest"
+                                accessory={undefined}
+                                body={undefined}
                                 circleColor="blue"
-                                clothing="shirt"
-                                clothingColor="white"
-                                eyebrows="angry"
-                                eyes="simple"
+                                clothing={undefined}
+                                clothingColor={undefined}
+                                eyebrows={undefined}
+                                eyes={undefined}
                                 faceMask={false}
                                 faceMaskColor="white"
-                                facialHair="none2"
-                                graphic="gatsby"
-                                hair="short"
-                                hairColor="black"
-                                hat="beanie"
+                                facialHair={undefined}
+                                graphic="none"
+                                hair={undefined}
+                                hairColor={undefined}
+                                hat="none"
                                 hatColor="green"
                                 lashes
-                                lipColor="purple"
+                                lipColor={undefined}
                                 mask
-                                mouth="tongue"
-                                skinTone="black"
+                                mouth={undefined}
+                                skinTone={undefined}
                             />
                             <div className='icon'>
                                 <button onClick={handleOpenModal}>

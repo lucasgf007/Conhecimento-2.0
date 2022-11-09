@@ -64,7 +64,7 @@ export const Sidebar = () => {
                         {sidebarOpen && <C.SLinkLabel> Sair </C.SLinkLabel>}
                     </Logout>
                 </C.SLinkContainer>
-                <C.SDivider bg={state.themeStatus.bg} />
+                {/* <C.SDivider bg={state.themeStatus.bg} /> */}
                 <C.Theme>
                     <ToggleTheme msg={sidebarOpen ? true : false} justify={sidebarOpen} />
                 </C.Theme>
