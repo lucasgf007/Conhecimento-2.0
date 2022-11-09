@@ -7,7 +7,7 @@ import { ToggleTheme } from '../Theme_modo'
 import { Context } from '../../Contexts/ContextGeral'
 
 // icons
-import { MagnifyingGlass, House, SignOut, PresentationChart, Image, Book, User, ChatDots, ArrowLeft } from 'phosphor-react'
+import { MagnifyingGlass, House, SignOut, PresentationChart, Image, Book, User, ChatDots, ArrowLeft, Gear } from 'phosphor-react'
 import { useLocation } from 'react-router-dom'
 
 export const Sidebar = () => {
@@ -109,6 +109,12 @@ const linksArray = [
         icon: <User />,
         to: '/perfil',
         notification: 3
+    },
+    {
+        label: 'Admin',
+        icon: <Gear />,
+        to: '/admin',
+        notification: 0
     }
 ]
 

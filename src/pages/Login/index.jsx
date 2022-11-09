@@ -12,7 +12,7 @@ import Foguete from '../../assets/foguete.png'
 import toast, { Toaster } from 'react-hot-toast';
 
 // API
-import { useApi } from '../../api/userApi'
+import { useApi } from '../../services/userApi'
 
 export const LoginPage = () => {
     const { state, dispatch } = useContext(Context)
@@ -26,22 +26,22 @@ export const LoginPage = () => {
     const navigate = useNavigate()
     
     const handleForm =  () => {
-        // const form = {email, senha}
-        // console.log('...form',form)
+        const form = {email, senha}
+        console.log('...form',form)
 
         if(email !== '' && senha !== ''){
             useApi.user(email, senha)
             .then((e)=>{
-                console.log(e)
-                dispatch({
-                    type: 'USER_INFO',
-                    payload: {
-                        userStatus: e[0]
-                    }
-                })
-                localStorage.setItem('@Auth:token', e[0].id)
-                localStorage.setItem('@Auth:user', JSON.stringify(e[0]))
-                navigate('/home')
+                console.log( "then",e)
+                // dispatch({
+                //     type: 'USER_INFO',
+                //     payload: {
+                //         userStatus: e[0]
+                //     }
+                // })
+                // localStorage.setItem('@Auth:token', e[0].id)
+                // localStorage.setItem('@Auth:user', JSON.stringify(e[0]))
+                // navigate('/home')
 
             })
             .catch((error)=>{
