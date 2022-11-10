@@ -30,6 +30,10 @@ export const LoginPage = () => {
         console.log('...form',form)
 
         if(email !== '' && senha !== ''){
+            
+
+            // login(email, senha)
+
             useApi.user(email, senha)
             .then((e)=>{
                 console.log( "then",e)
