@@ -32,12 +32,15 @@ export const ContextProvider = ({ children }) => {
         const loadStoreAuth = () => {
             const sessionToken = localStorage.getItem('@Auth:token')
             const sessionUser = localStorage.getItem('@Auth:user')
+            const dados = JSON.parse(sessionUser)
 
             if(sessionToken && sessionUser){
                 dispatch({
                     type: 'USER_INFO',
                     payload: {
-                        userStatus: JSON.parse(sessionUser)
+                        userStatus: JSON.parse(sessionUser),
+                        Nome: dados.Nome,
+                        Cargo: dados.Cargo
                     }
                 })
             }
