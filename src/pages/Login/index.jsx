@@ -26,26 +26,31 @@ export const LoginPage = () => {
     const navigate = useNavigate()
     
     const handleForm =  () => {
-        const form = {email, senha}
-        console.log('...form',form)
 
         if(email !== '' && senha !== ''){
             useApi.user(email, senha)
             .then((e)=>{
                 console.log( "then",e)
-                // dispatch({
-                //     type: 'USER_INFO',
-                //     payload: {
-                //         userStatus: e[0]
-                //     }
-                // })
-                // localStorage.setItem('@Auth:token', e[0].id)
-                // localStorage.setItem('@Auth:user', JSON.stringify(e[0]))
-                // navigate('/home')
-
+                if(e.body){
+                    dispatch({
+                        type: 'USER_INFO',
+                        payload: {
+                            userStatus: e.body,
+                            Nome: e.body.Nome,
+                            Cargo: e.body.Cargo
+                        }
+                    })
+                    localStorage.setItem('@Auth:token', e.statusCode)
+                    localStorage.setItem('@Auth:user', JSON.stringify(e.body))
+                    navigate('/home')
+                } else{
+                    toast.error("Email ou senha está errada")
+                    setCampos(true)
+                }
             })
             .catch((error)=>{
-                toast.error("Email ou senha incorretos!")
+                // console.log(error)
+                toast.error("Tem algo errado! tente novamente mais tarde")
                 setCampos(true)
             })
 
