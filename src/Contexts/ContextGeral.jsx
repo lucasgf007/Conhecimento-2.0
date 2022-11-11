@@ -39,8 +39,11 @@ export const ContextProvider = ({ children }) => {
                     type: 'USER_INFO',
                     payload: {
                         userStatus: JSON.parse(sessionUser),
+                        Id: dados.ID,
                         Nome: dados.Nome,
-                        Cargo: dados.Cargo
+                        Email: dados.E_mail,
+                        Cargo: dados.Cargo,
+                        Role: dados.Role
                     }
                 })
             }

@@ -1,8 +1,10 @@
 export const initialDadosUser = {
     User: localStorage.getItem('@Auth:user'),
+    Id: 0,
     Nome: '',
+    Email: '',
     Cargo: '',
-    Role: 'admin'
+    Role: 'user'
 }
 
 export const reducerDadosUser = (state, action) => {
@@ -11,8 +13,11 @@ export const reducerDadosUser = (state, action) => {
         case 'USER_INFO':
             return{...state, 
                 User: action.payload.userStatus,
+                Id: action.payload.Id,
                 Nome: action.payload.Nome,
-                Cargo: action.payload.Cargo
+                Email: action.payload.Email,
+                Cargo: action.payload.Cargo,
+                Role: action.payload.Role
             }
         case 'USER_ROLE':
                 return{...state, Role: action.payload.userRole}

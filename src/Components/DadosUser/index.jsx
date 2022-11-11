@@ -12,22 +12,23 @@ import { useApi } from '../../services/userApi'
 export const DadosUser = () => {
     const { state, dispatch } = useContext(Context)
     const [ Nome, setNome ] = useState('')
+    const [ Cargo, setCargo ] = useState('')
+    const [ Email, setEmail ] = useState('')
 
     const handleUpdate = () => {
-        useApi.updateUser('12', Nome, 'gabriel@gmail.com', 'DEV', '171717', 'admin')
+        useApi.updateUser(state.dadosUser.Id, Nome, Email, Cargo)
         .then((e)=>{
             console.log( 'update', e)
             toast.success("Perfil Atualizado")
             // dispatch({
             //     type: 'USER_INFO',
             //     payload: {
-            //         userStatus: e.body,
-            //         Nome: Nome,
-            //         Cargo: e.body.Cargo
+            //         Nome,
+            //         Email,
+            //         Cargo
             //     }
             // })
         })
-        // console.log(Nome)
     }
 
 
@@ -42,31 +43,13 @@ export const DadosUser = () => {
                 <label> Nome
                     <input type='text' placeholder={state.dadosUser.Nome} value={Nome} onChange={(e) => setNome(e.target.value)} />
                 </label>
-                <label> Apelido
-                    <input type='text' />
-                </label>
-                <label> Telefone Empresarial
-                    <input type='text' />
-                </label>
-                <label> Telefone Empresarial
-                    <input type='text' />
-                </label>
-                <label> Telefone Pessoal
-                    <input type='text' />
+                <label> Cargo
+                    <input type='text' placeholder={state.dadosUser.Cargo} value={Cargo} onChange={(e) => setCargo(e.target.value)} />
                 </label>
                 <label> Email
-                    <input type='text' />
+                    <input type='text' placeholder={state.dadosUser.Email} value={Email} onChange={(e) => setEmail(e.target.value)} />
                 </label>
-                <label> Gmail
-                    <input type='text' />
-                </label>
-                <label> CEP
-                    <input type='text' />
-                </label>
-                <label> Rua + Número
-                    <input type='text' />
-                </label>
-
+                
                 <button onClick={handleUpdate}>Atualiza Perfil</button>
             </C.Dados>
         </C.Conteiner>

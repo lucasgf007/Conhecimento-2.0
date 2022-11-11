@@ -39,8 +39,11 @@ export const LoginPage = () => {
                         type: 'USER_INFO',
                         payload: {
                             userStatus: e.body,
+                            Id: e.ID,
                             Nome: e.body.Nome,
-                            Cargo: e.body.Cargo
+                            Email: e.body.E_mail,
+                            Cargo: e.body.Cargo,
+                            Role: e.body.Role
                         }
                     })
                     localStorage.setItem('@Auth:token', e.statusCode)
