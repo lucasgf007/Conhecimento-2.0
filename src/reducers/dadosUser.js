@@ -2,7 +2,7 @@ export const initialDadosUser = {
     User: localStorage.getItem('@Auth:user'),
     Nome: '',
     Cargo: '',
-    Role: ''
+    Role: 'admin'
 }
 
 export const reducerDadosUser = (state, action) => {

@@ -7,8 +7,8 @@ export const Conteiner = styled.div`
 `
 
 export const Header = styled.div`
-    background-color: ${item => item.bg === 'background-light' ? '#48A4E7' : '#F5F5F5'};
-    color: ${item => item.bg === 'background-light' ? '#fff' : '#575B64'};
+    background-color: ${item => item.bg === 'background-light' ? '#DADDE2' : '#F5F5F5'};
+    color: ${item => item.bg === 'background-light' ? '#575B64' : '#575B64'};
     padding: ${v.mdSpacing};
     border-radius: ${v.borderRadius};
     margin: -${v.xlSpacing} 0 ${v.lgSpacing} 0;

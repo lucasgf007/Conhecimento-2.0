@@ -29,7 +29,6 @@ export const LoginPage = () => {
 
         if(email !== '' && senha !== ''){
             
-
             // login(email, senha)
 
             useApi.user(email, senha)

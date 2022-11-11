@@ -5,6 +5,8 @@ import { Home } from '../pages/Home'
 import { Layout } from '../Components/theme'
 import { LoginPage } from '../pages/Login'
 import { Perfil } from '../pages/Perfil'
+import { Admin } from '../pages/Admin'
+import { Users } from '../Components/Users'
 
 export const Router = () => {
 
@@ -21,9 +23,17 @@ export const Router = () => {
                             <Route path='cursos' element={<h1>cursos</h1>}/>
                             <Route path='chat' element={<h1>chat</h1>}/>
                             <Route path='perfil' element={<Perfil />}/>
-                            <Route path='admin' element={
+                            <Route path='admin/*' element={
                                 <Permission>
-                                    <h1>Admin</h1>
+                                    <Admin>
+                                        <Routes>
+                                            <Route path='/' element={<Users />} />
+                                            <Route path='vendas' element={<h1>vendas</h1>} />
+                                            <Route path='designers' element={<h1>designers</h1>} />
+                                            <Route path='pos_vendas' element={<h1>Pós-vendas</h1>} />
+                                            <Route path='bi' element={<h1>BI</h1>} />
+                                        </Routes>
+                                    </Admin>
                                 </Permission>
                             }/>
                         </Routes>

@@ -98,6 +98,7 @@ export const SDivider = styled.div`
 
 export const SLinkContainerGeral = styled.div`
     overflow-x: auto;
+    height: 340px;
     ::-webkit-scrollbar{
         width: 1px;
         border-radius: 50%;

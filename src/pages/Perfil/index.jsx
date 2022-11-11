@@ -83,7 +83,7 @@ export const Perfil = () => {
                             </div>
                         </div>
                         <div className='detalhes'>
-                            <h3>{state.dadosUser.User.name}</h3>
+                            <h3>{state.dadosUser.Nome}</h3>
                             <p>Dev</p>
                         </div>
                     </div>

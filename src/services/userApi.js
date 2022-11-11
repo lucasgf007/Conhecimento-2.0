@@ -31,23 +31,10 @@ export const useApi = {
         return response.data
     },
     user: async (e_mail, password) => {
-        // const response = await fetch(`${BASE}/test_pass`, {
-        //     body: {
-        //         e_mail: e_mail,
-        //         password: password
-        //     }
-        // });
-        // const user = await response.json();
-        // return user;
-
-        // let e_mail_ = JSON.stringify(e_mail)
-        // let pass = JSON.stringify(password)
-
-        let response = await axios.get(`${BASE}/test_pass`, {
-            data: {
-                "e_mail": "gabriel@gmail.com",
-                "password": "171717"
-            }
+        
+        let response = await axios.post(`${BASE}/test_pass`, {
+            e_mail,
+            password
         })
         return response.data
     },

@@ -21,7 +21,9 @@ export const DadosUser = () => {
             // dispatch({
             //     type: 'USER_INFO',
             //     payload: {
-            //         userStatus: e.body
+            //         userStatus: e.body,
+            //         Nome: Nome,
+            //         Cargo: e.body.Cargo
             //     }
             // })
         })

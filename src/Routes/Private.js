@@ -15,14 +15,16 @@ export const Permission = ({children}) => {
 
     // useEffect(() => {
     //     const loadRole = () => {
-    //         console.log('dentro da função')
-    //         setPermission(true)
+    //         // console.log('dentro da função')
+    //         // setPermission(true)
+
+    //         if(){
+    //             setPermission(true)
+    //         }
     //     }
 
     //     loadRole()
-    // }, [permission])
+    // }, [])
 
-    // console.log('fora da função')
-
-    return state.dadosUser.Role !== '' ? children : <Navigate to='/home/' />
+    return state.dadosUser.Role === 'admin' ? children : <Navigate to='/home/' />
 }

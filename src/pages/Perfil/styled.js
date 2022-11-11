@@ -3,11 +3,11 @@ import { v, btnReset } from '../../styles/variable'
 
 export const Container = styled.div`
     
-    padding: ${v.mdSpacing};
+    /* padding: ${v.mdSpacing}; */
     border-radius: ${v.borderRadius};
-    box-shadow: ${v.boxShadow};
+    /* box-shadow: ${v.boxShadow}; */
     height: 100%;
-    background-color: ${item => item.bg === 'background-light' ? '#fff' : '#575B64'};
+    /* background-color: ${item => item.bg === 'background-light' ? '#fff' : '#575B64'}; */
     color: ${item => item.bg === 'background-light' ? '#575B64' : '#fff'};
 
     .min-container{
