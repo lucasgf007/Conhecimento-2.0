@@ -1,15 +1,14 @@
 import * as C from './styled'
 import { useContext, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
-// firebase
-// import { signInWithEmailAndPassword } from 'firebase/auth'
-// import { auth } from '../../services/firebase'
 import { Context } from '../../Contexts/ContextGeral'
 
 import { ToggleTheme } from '../../Components/Theme_modo'
 import Foguete from '../../assets/foguete.png'
 
 import toast, { Toaster } from 'react-hot-toast';
+
+
 
 // API
 import { useApi } from '../../services/userApi'
@@ -29,7 +28,6 @@ export const LoginPage = () => {
 
         if(email !== '' && senha !== ''){
             
-            // login(email, senha)
 
             useApi.user(email, senha)
             .then((e)=>{
@@ -46,6 +44,7 @@ export const LoginPage = () => {
                             Role: e.body.Role
                         }
                     })
+                    // crypto_.encrypto(e.ID)
                     localStorage.setItem('@Auth:token', e.statusCode)
                     localStorage.setItem('@Auth:user', JSON.stringify(e.body))
                     navigate('/home')
