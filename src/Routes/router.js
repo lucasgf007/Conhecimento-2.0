@@ -7,6 +7,8 @@ import { LoginPage } from '../pages/Login'
 import { Perfil } from '../pages/Perfil'
 import { Admin } from '../pages/Admin'
 import { Users } from '../Components/Users'
+import { Vendas } from '../pages/Vendas'
+import { Chat } from '../pages/Chat'
 
 export const Router = () => {
 
@@ -18,10 +20,10 @@ export const Router = () => {
                     <Layout>
                         <Routes>
                             <Route path='/' element={<Home />} />
-                            <Route path='dash' element={<h1>dash</h1>}/>
+                            <Route path='vendas' element={<Vendas />}/>
                             <Route path='galeria' element={<h1>Em breve...</h1>}/>
                             <Route path='cursos' element={<h1>cursos</h1>}/>
-                            <Route path='chat' element={<h1>chat</h1>}/>
+                            <Route path='chat' element={<Chat />}/>
                             <Route path='perfil' element={<Perfil />}/>
                             <Route path='admin/*' element={
                                 <Permission>

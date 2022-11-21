@@ -7,20 +7,29 @@ import { ToggleTheme } from '../Theme_modo'
 import { Context } from '../../Contexts/ContextGeral'
 
 // icons
-import { MagnifyingGlass, House, SignOut, PresentationChart, Image, Book, User, ChatDots, ArrowLeft, Gear } from 'phosphor-react'
+import { MagnifyingGlass, House, SignOut, Image, Book, User, ChatDots, ArrowLeft, Gear, ListChecks } from 'phosphor-react'
 import { useLocation } from 'react-router-dom'
+
+// Auto animate
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 export const Sidebar = () => {
     const { state } = useContext(Context)
     const [ sidebarOpen, setSidebarOpen ] = useState(true)
+    const [ parent, enableAnimations ] = useAutoAnimate()
     const { pathname } = useLocation()
+
+    const handleSidebarOpen = () => {
+        setSidebarOpen(p => !p)
+        enableAnimations(false)
+    }
 
 
     return(
         <C.Container>
-            <C.SSidebar bg={state.themeStatus.bg} isOpen={sidebarOpen}>
+            <C.SSidebar bg={state.themeStatus.bg} isOpen={sidebarOpen} ref={parent}>
                 <>
-                    <C.SSidebarButton bg={state.themeStatus.bg} isOpen={sidebarOpen} onClick={() => setSidebarOpen(p => !p)}>
+                    <C.SSidebarButton bg={state.themeStatus.bg} isOpen={sidebarOpen} onClick={() => handleSidebarOpen()}>
                         <ArrowLeft />
                     </C.SSidebarButton>
                 </>
@@ -81,9 +90,9 @@ const linksArray = [
         notification: 0
     },
     {
-        label: 'Dash',
-        icon: <PresentationChart />,
-        to: '/dash',
+        label: 'Vendas',
+        icon: <ListChecks />,
+        to: '/vendas',
         notification: 5
     },
     {
