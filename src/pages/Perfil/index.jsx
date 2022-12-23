@@ -83,8 +83,8 @@ export const Perfil = () => {
                             </div>
                         </div>
                         <div className='detalhes'>
-                            <h3>{state.dadosUser.Nome}</h3>
-                            <p>{state.dadosUser.Cargo}</p>
+                            <h3>{state.dadosUser.nome}</h3>
+                            <p>{state.dadosUser.cargo}</p>
                         </div>
                     </div>
                 </C.Perfil>

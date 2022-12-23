@@ -32,21 +32,23 @@ export const LoginPage = () => {
             useApi.user(email, senha)
             .then((e)=>{
                 console.log( "then",e)
-                if(e.body){
+                const { id, id_user, nome, email, cargo, role } = e
+                if(e){
                     dispatch({
                         type: 'USER_INFO',
                         payload: {
-                            userStatus: e.body,
-                            Id: e.ID,
-                            Nome: e.body.Nome,
-                            Email: e.body.E_mail,
-                            Cargo: e.body.Cargo,
-                            Role: e.body.Role
+                            userStatus: e,
+                            id,
+                            id_user,
+                            nome,
+                            email,
+                            cargo,
+                            role
                         }
                     })
-                    // crypto_.encrypto(e.ID)
-                    localStorage.setItem('@Auth:token', e.statusCode)
-                    localStorage.setItem('@Auth:user', JSON.stringify(e.body))
+                    
+                    localStorage.setItem('@Auth:token', id_user)
+                    localStorage.setItem('@Auth:user', JSON.stringify(e))
                     navigate('/home')
                 } else{
                     toast.error("Email ou senha está errada")

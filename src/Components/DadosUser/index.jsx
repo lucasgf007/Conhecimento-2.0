@@ -16,18 +16,25 @@ export const DadosUser = () => {
     const [ Email, setEmail ] = useState('')
 
     const handleUpdate = () => {
-        useApi.updateUser(state.dadosUser.Id, Nome, Email, Cargo)
+        useApi.updateUser(state.dadosUser.id, Nome!=''?Nome:state.dadosUser.nome , Email!=''?Email:state.dadosUser.email, Cargo!=''?Cargo:state.dadosUser.cargo)
         .then((e)=>{
             console.log( 'update', e)
-            toast.success("Perfil Atualizado")
-            // dispatch({
-            //     type: 'USER_INFO',
-            //     payload: {
-            //         Nome,
-            //         Email,
-            //         Cargo
-            //     }
-            // })
+            if(e.status === 'Atualizado com sucesso'){
+                toast.success("Perfil Atualizado")
+                dispatch({
+                    type: 'USER_INFO',
+                    payload: {
+                        nome: Nome!=''?Nome:state.dadosUser.nome,
+                        email: Email!=''?Email:state.dadosUser.email,
+                        cargo: Cargo!=''?Cargo:state.dadosUser.cargo
+                    }
+                })
+                setNome('')
+                setEmail('')
+                setCargo('')
+            } else{
+                toast.success("Algo deu errado")
+            }
         })
     }
 
@@ -41,13 +48,13 @@ export const DadosUser = () => {
             <C.Dados bg={state.themeStatus.bg}>
 
                 <label> Nome
-                    <input type='text' placeholder={state.dadosUser.Nome} value={Nome} onChange={(e) => setNome(e.target.value)} />
+                    <input type='text' placeholder={state.dadosUser.nome} value={Nome} onChange={(e) => setNome(e.target.value)} />
                 </label>
                 <label> Cargo
-                    <input type='text' placeholder={state.dadosUser.Cargo} value={Cargo} onChange={(e) => setCargo(e.target.value)} />
+                    <input type='text' placeholder={state.dadosUser.cargo} value={Cargo} onChange={(e) => setCargo(e.target.value)} />
                 </label>
                 <label> Email
-                    <input type='text' placeholder={state.dadosUser.Email} value={Email} onChange={(e) => setEmail(e.target.value)} />
+                    <input type='text' placeholder={state.dadosUser.email} value={Email} onChange={(e) => setEmail(e.target.value)} />
                 </label>
                 
                 <button onClick={handleUpdate}>Atualiza Perfil</button>

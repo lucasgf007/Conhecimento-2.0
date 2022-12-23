@@ -31,19 +31,20 @@ export const ContextProvider = ({ children }) => {
     useEffect(()=>{
         const loadStoreAuth = () => {
             const sessionToken = localStorage.getItem('@Auth:token')
-            const sessionUser = localStorage.getItem('@Auth:user')
-            const dados = JSON.parse(sessionUser)
+            const localUser = localStorage.getItem('@Auth:user')
+            const dados = JSON.parse(localUser)
 
-            if(sessionToken && sessionUser){
+            if(sessionToken && localUser){
                 dispatch({
                     type: 'USER_INFO',
                     payload: {
-                        userStatus: JSON.parse(sessionUser),
-                        Id: dados.ID,
-                        Nome: dados.Nome,
-                        Email: dados.E_mail,
-                        Cargo: dados.Cargo,
-                        Role: dados.Role
+                        userStatus: JSON.parse(localUser),
+                        id: dados.id,
+                        id_user: dados.id_user,
+                        nome: dados.nome,
+                        email: dados.email,
+                        cargo: dados.cargo,
+                        role: dados.role
                     }
                 })
             }
