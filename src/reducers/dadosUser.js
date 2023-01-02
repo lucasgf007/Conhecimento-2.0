@@ -1,5 +1,5 @@
 export const initialDadosUser = {
-    User: localStorage.getItem('@Auth:user'),
+    token: localStorage.getItem('@Auth:token'),
     id: 0,
     id_user: 0,
     nome: '',
@@ -13,7 +13,7 @@ export const reducerDadosUser = (state, action) => {
     switch(action.type){
         case 'USER_INFO':
             return{...state, 
-                User: action.payload.userStatus,
+                token: action.payload.token,
                 id: action.payload.id,
                 id_user: action.payload.id_user,
                 nome: action.payload.nome,
